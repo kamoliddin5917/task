@@ -27,7 +27,8 @@ const LogIn = () => {
       .then((dataArr) => {
         if (dataArr.code === 401) {
         } else {
-          setToken(JSON.stringify(dataArr.token));
+          // setToken(JSON.stringify(dataArr.token));
+          setToken(dataArr.token);
         }
       });
 

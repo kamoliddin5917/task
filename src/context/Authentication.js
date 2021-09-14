@@ -4,12 +4,14 @@ const Auth = createContext(null);
 
 function AuthProvider({ children }) {
   const [state, setState] = useState(
-    JSON.parse(window.localStorage.getItem("token"))
+    // JSON.parse(window.localStorage.getItem("token"))
+    window.localStorage.getItem("token")
   );
 
   useEffect(() => {
     if (state) {
-      window.localStorage.setItem("token", JSON.stringify(state));
+      // window.localStorage.setItem("token", JSON.stringify(state));
+      window.localStorage.setItem("token", state);
     } else {
       window.localStorage.removeItem("token");
     }

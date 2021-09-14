@@ -14,7 +14,6 @@ const Home = () => {
   const [arr, setArr] = useState([]);
 
   const btns = new Array(btn).fill(7);
-
   useEffect(() => {
     (async () => {
       const res = await fetch(`https://face.ox-sys.com/variations`, {
