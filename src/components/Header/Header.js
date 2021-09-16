@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header({ arr, setArr }) {
+function Header({ arr, setFilterArr }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -166,7 +166,7 @@ function Header({ arr, setArr }) {
     if (evt.keyCode === 13 && evt.target.value) {
       let searchValue = evt.target.value.trim();
       let searchRegExp = new RegExp(searchValue, "gi");
-      let filterArr = arr
+      let filterArrRes = arr
         .filter((item) => item.name.match(searchRegExp))
         .sort((a, b) => {
           if (a.name > b.name) {
@@ -177,9 +177,10 @@ function Header({ arr, setArr }) {
           }
           return 0;
         });
-      setArr(filterArr ? filterArr : []);
+      setFilterArr(filterArrRes ? filterArrRes : []);
     }
   };
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">

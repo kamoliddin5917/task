@@ -12,7 +12,7 @@ const Home = () => {
   const [btn, setBtn] = useState(1);
   const [page, setPage] = useState(1);
   const [arr, setArr] = useState([]);
-
+  const [filterArr, setFilterArr] = useState([]);
   const btns = new Array(btn).fill(7);
   useEffect(() => {
     (async () => {
@@ -34,6 +34,7 @@ const Home = () => {
       const dataa = await res.json();
       setBtn(dataa.total_count ? Math.ceil(dataa.total_count / 21) : 1);
       setArr(dataa.items);
+      setFilterArr(dataa.items);
     })();
   }, [page, token]);
 
@@ -42,11 +43,11 @@ const Home = () => {
   };
   return (
     <div className="home">
-      <Header setArr={setArr} arr={arr} />
+      <Header setFilterArr={setFilterArr} arr={arr} />
 
-      {arr?.length > 0 && (
+      {filterArr?.length > 0 && (
         <ul className="home__boxes container">
-          {arr.map((item) => (
+          {filterArr.map((item) => (
             <Box key={item.id} item={item} />
           ))}
         </ul>
