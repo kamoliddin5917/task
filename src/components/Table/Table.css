@@ -1,0 +1,9 @@
+.box {
+  height: 82vh;
+  overflow-y: auto;
+  background: #3F51B5;
+}
+
+.box::-webkit-scrollbar {
+  display: none;
+}

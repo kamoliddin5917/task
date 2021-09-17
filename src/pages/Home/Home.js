@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 // Components
-import Box from "../../components/Box/Box";
 import { Button } from "@material-ui/core";
 import Header from "../../components/Header/Header";
+import DenseTable from "../../components/Table/Table";
 
 const Home = () => {
   const [token] = useAuth();
@@ -45,13 +45,7 @@ const Home = () => {
     <div className="home">
       <Header setFilterArr={setFilterArr} arr={arr} />
 
-      {filterArr?.length > 0 && (
-        <ul className="home__boxes container">
-          {filterArr.map((item) => (
-            <Box key={item.id} item={item} />
-          ))}
-        </ul>
-      )}
+      {filterArr?.length > 0 && <DenseTable rows={filterArr} />}
 
       {btns?.length > 0 && (
         <div className="btns">
