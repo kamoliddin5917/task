@@ -169,13 +169,14 @@ function Header({ arr, setFilterArr }) {
       let filterArrRes = arr
         .filter((item) => item.name.match(searchRegExp))
         .sort((a, b) => {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (a.name < b.name) {
-            return -1;
-          }
-          return 0;
+          return a.name.indexOf(searchValue) - b.name.indexOf(searchValue);
+          // if (a.name > b.name) {
+          //   return 1;
+          // }
+          // if (a.name < b.name) {
+          //   return -1;
+          // }
+          // return 0;
         });
       setFilterArr(filterArrRes ? filterArrRes : []);
     }
